@@ -22,7 +22,9 @@ const int L_PWM_PIN = 40;
 const int R_PWM_PIN = 39;
 const int L_DIR_PIN = 29;
 const int R_DIR_PIN = 30;
-const int MOTOR_SLEEP_PIN = 31;
+
+const int Left_MOTOR_SLEEP_PIN = 11;
+const int Right_MOTOR_SLEEP_PIN = 31;
 
 // Forward declaration
 void setMotorSpeed(int left, int right);
@@ -46,9 +48,11 @@ void setup() {
   pinMode(R_PWM_PIN, OUTPUT);
   pinMode(L_DIR_PIN, OUTPUT);
   pinMode(R_DIR_PIN, OUTPUT);
-  pinMode(MOTOR_SLEEP_PIN, OUTPUT); //new impl
+  pinMode(Right_MOTOR_SLEEP_PIN, OUTPUT); //right nslp
+  pinMode(Left_MOTOR_SLEEP_PIN , OUTPUT); // left nslp
 
-  digitalWrite(MOTOR_SLEEP_PIN, HIGH);
+  digitalWrite(Right_MOTOR_SLEEP_PIN, HIGH);
+  digitalWrite(Left_MOTOR_SLEEP_PIN , HIGH);
 
   Serial.begin(9600);
   delay(1000);
@@ -117,7 +121,7 @@ void loop() {
   float correction = P + integ + D;
 
   // 5) Motor output
-  int base = 90;     // adjust 80–140 depending on your car
+  int base = 30;     // adjust 80–140 depending on your car
   int leftMotor  = base + (int)correction;
   int rightMotor = base - (int)correction;
 
