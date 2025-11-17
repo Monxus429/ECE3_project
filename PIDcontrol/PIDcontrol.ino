@@ -23,8 +23,8 @@ const int R_PWM_PIN = 39;
 const int L_DIR_PIN = 29;
 const int R_DIR_PIN = 30;
 
-const int Left_MOTOR_SLEEP_PIN = 11;
-const int Right_MOTOR_SLEEP_PIN = 31;
+const int RIGHT_MOTOR_SLEEP_PIN = 11; //nslp
+//const int LEFT_MOTOR_SLEEP_PIN = 31; //nslp
 
 // Forward declaration
 void setMotorSpeed(int left, int right);
@@ -48,11 +48,11 @@ void setup() {
   pinMode(R_PWM_PIN, OUTPUT);
   pinMode(L_DIR_PIN, OUTPUT);
   pinMode(R_DIR_PIN, OUTPUT);
-  pinMode(Right_MOTOR_SLEEP_PIN, OUTPUT); //right nslp
-  pinMode(Left_MOTOR_SLEEP_PIN , OUTPUT); // left nslp
+ //pinMode(RIGHT_MOTOR_SLEEP_PIN, OUTPUT); //right nslp
+  pinMode(LEFT_MOTOR_SLEEP_PIN , OUTPUT); // left nslp
 
-  digitalWrite(Right_MOTOR_SLEEP_PIN, HIGH);
-  digitalWrite(Left_MOTOR_SLEEP_PIN , HIGH);
+  digitalWrite(RIGHT_MOTOR_SLEEP_PIN, HIGH);
+  digitalWrite(LEFT_MOTOR_SLEEP_PIN , HIGH);
 
   Serial.begin(9600);
   delay(1000);
