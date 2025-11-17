@@ -18,6 +18,12 @@ float prevError = 0;
 float integ = 0;
 unsigned long prevTime = 0;
 
+const int L_PWM_PIN = 40;
+const int R_PWM_PIN = 39;
+const int L_DIR_PIN = 29;
+const int R_DIR_PIN = 30;
+const int MOTOR_SLEEP_PIN = 31;
+
 // Forward declaration
 void setMotorSpeed(int left, int right);
 
@@ -25,16 +31,13 @@ void ECE3_SetMotorSpeed(int left, int right) {
   setMotorSpeed(left, right);
 }
 
-const int L_PWM_PIN = 40;
-const int R_PWM_PIN = 39;
-const int L_DIR_PIN = 29;
-const int R_DIR_PIN = 30;
 
 void StopMotors() {
   analogWrite(L_PWM_PIN, 0);
   analogWrite(R_PWM_PIN, 0);
   //digitalWrite(LED_RF, HIGH);   // if LED_RF exists
 }
+
 
 void setup() {
   ECE3_Init();
@@ -43,6 +46,9 @@ void setup() {
   pinMode(R_PWM_PIN, OUTPUT);
   pinMode(L_DIR_PIN, OUTPUT);
   pinMode(R_DIR_PIN, OUTPUT);
+  pinMode(MOTOR_SLEEP_PIN, OUTPUT); //new impl
+
+  digitalWrite(MOTOR_SLEEP_PIN, HIGH);
 
   Serial.begin(9600);
   delay(1000);
